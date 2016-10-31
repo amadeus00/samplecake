@@ -51,11 +51,11 @@ class CarsController extends AppController
         $car = $this->Cars->newEntity();
         if ($this->request->is('post')) {
             $car = $this->Cars->patchEntity($car, $this->request->data, ['associated' => ['Buytrades']]);
+
+            $car->buytrades[0]['totalvalue'] = 100;
+
             if ($this->Cars->save($car)) {
                 $this->Flash->success(__('The car has been saved.'));
-                $this->buytrades->updateALL(
-                    array('buytrades.totalvalue' => 100));
-
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The car could not be saved. Please, try again.'));
@@ -79,7 +79,6 @@ class CarsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $car = $this->Cars->patchEntity($car, $this->request->data);
-            $car->$this->buydrade->totalvalue = 100;
             if ($this->Cars->save($car)) {
                 $this->Flash->success(__('The car has been saved.'));
 
