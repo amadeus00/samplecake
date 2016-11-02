@@ -46,6 +46,10 @@
             <th scope="row"><?= __('Totalvalue') ?></th>
             <td><?= $this->Number->format($buytrade->totalvalue) ?></td>
         </tr>
+        <tr>
+            <th scope="row"><?= __('Remaining') ?></th>
+            <td><?= $this->Number->format($buytrade->remaining) ?></td>
+        </tr>
     </table>
     <div class="related">
         <h4><?= __('Related Withdrawals') ?></h4>

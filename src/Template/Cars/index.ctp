@@ -12,10 +12,10 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('carname') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('manufacturer') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('storagedate') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('retrievaldate') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('車名') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('メーカー') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('入庫日') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('出庫日') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('status') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -26,8 +26,8 @@
                 <td><?= $this->Number->format($car->id) ?></td>
                 <td><?= h($car->carname) ?></td>
                 <td><?= h($car->manufacturer) ?></td>
-                <td><?= h($car->storagedate) ?></td>
-                <td><?= h($car->retrievaldate) ?></td>
+                <td><?php if(!empty($car->storagedate)): ?><?= date('Y年m月d日', strtotime(h($car->storagedate))) ?><?php endif; ?></td>
+                <td><?php if(!empty($car->retrivaldate)): ?><?= date('Y年m月d日', strtotime(h($car->retrievaldate))) ?><?php endif; ?></td>
                 <td><?= $this->Number->format($car->status) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $car->id]) ?>

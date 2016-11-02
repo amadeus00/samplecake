@@ -13,11 +13,11 @@
     <h3><?= h($car->id) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('Carname') ?></th>
+            <th scope="row"><?= __('車名') ?></th>
             <td><?= h($car->carname) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Manufacturer') ?></th>
+            <th scope="row"><?= __('メーカー') ?></th>
             <td><?= h($car->manufacturer) ?></td>
         </tr>
         <tr>
@@ -29,12 +29,12 @@
             <td><?= $this->Number->format($car->status) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Storagedate') ?></th>
-            <td><?= h($car->storagedate) ?></td>
+            <th scope="row"><?= __('入庫日') ?></th>
+            <td><?php if(!empty($car->storagedate)): ?><?= date('Y年m月d日', strtotime(h($car->storagedate))) ?><?php endif; ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Retrievaldate') ?></th>
-            <td><?= h($car->retrievaldate) ?></td>
+            <th scope="row"><?= __('出庫日') ?></th>
+            <td><?php if(!empty($car->retrivaldate)): ?><?= date('Y年m月d日', strtotime(h($car->retrievaldate))) ?><?php endif; ?></td>
         </tr>
     </table>
     <div class="related">

@@ -11,7 +11,7 @@ use App\Controller\AppController;
 class CarsController extends AppController
 {
 
-    /**
+      /**
      * Index method
      *
      * @return \Cake\Network\Response|null
@@ -52,7 +52,10 @@ class CarsController extends AppController
         if ($this->request->is('post')) {
             $car = $this->Cars->patchEntity($car, $this->request->data, ['associated' => ['Buytrades']]);
 
-            $car->buytrades[0]['totalvalue'] = 100;
+            $totalvalue = $car->buytrades[0]['carvalue'] + $car->buytrades[0]['tax'] + $car->buytrades[0]['nontax'] + $car->buytrades[0]['recycle'] + $car->buytrades[0]['discount'];
+
+            $car->buytrades[0]['totalvalue'] = $totalvalue;
+            $car->buytrades[0]['remaining'] = $totalvalue;
 
             if ($this->Cars->save($car)) {
                 $this->Flash->success(__('The car has been saved.'));
